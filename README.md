@@ -1,4 +1,4 @@
-# desafioPOO-grace-hopper-
+# Desafio POO - Squad Grace Hopper
 Projeto de Biblioteca em Python usando POO
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
