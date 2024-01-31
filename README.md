@@ -3,6 +3,10 @@ Projeto de Biblioteca em Python usando POO
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+# Tecnologias utilizadas
+* Python
+* POO - Programação Orientada a Objeto
+
 # Squad Grace Hopper
 1. Anaisa Mayara Teodoro e Marina dos Reis Barros:
    Classes: Lista de Genero e Lista de Exemplares
