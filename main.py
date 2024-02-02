@@ -1,28 +1,7 @@
 from livro import *
 from genero import *
 
-def cadastrarLivro():
-    titulo = input("Digite o nome do livro: ")
-    editora = input("Digite o nome do editora: ")
-    exemplares = input("Digite a quantidade de exemplares: ")
-    autores = []
-    generos = []
-    while True:
-        autor = input("Digite os autores: ")
-        if autor == '0':
-            break
-        else:
-            autores.append(autor)
-    while True:
-        genero = input("Digite os generos: ")
-        if genero == '0':
-            break
-        else:
-            generos.append(genero)
-    livro = Livro(titulo, editora, autores, generos, exemplares)
-    print("Livro cadastrado com sucesso!\n")
-    return livro
-
+# Função que chama o menu de usuário
 def menuUsuario():
     print("\n# Menu - Usuarios #")
     print("- Digite 1 para cadastrar um usuario")
@@ -67,7 +46,10 @@ def menuLivros():
 
     # Condicoes, cada uma vai chamar uma funcao definida anteriormente
     if opcao == 1:
-        cadastrarLivro()
+        # Instancia o objeto
+        livro = Livro()
+        # Chama a função da classe que reatribui os valores desejados
+        livro.cadastraLivro() # Estamos apenas instanciando um livro, mas precisamos cadastrá-lo no estoque da biblioteca
     
     elif opcao == 2:
         # A funcao chamada aqui deve alterar as caracteristicas do livro por meio de setters definidos na classe Livro
@@ -80,13 +62,14 @@ def menuLivros():
     elif opcao == 4:
         # A funcao chamada aqui deve listar os livros cadastrados no sistema, funcao definida na classe Biblioteca
         pass
-
+    
     elif opcao == 0:
-        pass
+        return
 
     else:
         print("Opcao invalida. Tente novamente.")
 
+# Função que chama o menu biblioteca
 def menuBiblioteca():
     print("\n# Menu - Biblioteca #")
     print("- Digite 1 para realizar um emprestimo")
