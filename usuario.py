@@ -37,9 +37,9 @@ class Usuario:
       self._nacionalidade = value
 
   # instancio a classe Usuario e método
-  usuario = Usuario()
-  usuario.adicionar_usuario(1)
-  print(usuario.id_usuario)
-  print(usuario.telefone)
-  print(usuario.nacionalidade)
-  print('Usuário cadastrado com sucesso!')
+usuario = Usuario()
+usuario.adicionar_usuario(1)
+print(usuario.id_usuario)
+print(usuario.telefone)
+print(usuario.nacionalidade)
+print('Usuário cadastrado com sucesso!')
