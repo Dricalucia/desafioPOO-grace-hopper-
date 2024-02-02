@@ -1,4 +1,5 @@
 from livro import *
+from genero import *
 
 def cadastrarLivro():
     titulo = input("Digite o nome do livro: ")
