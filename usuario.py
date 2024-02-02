@@ -8,8 +8,23 @@ class Usuario:
     # método para adicionar usuário
     def adicionar_usuario(self, id_usuario):
       self._id_usuario = id_usuario
-      self._telefone = input('Digite o telefone: ')
+      self._nacionalidade = ''
+      #Este é um loop infinito que continuará até que o usuário insira um número de telefone válido
+      while True:
+          # Solicita ao usuário que insira um número de telefone
+          self._telefone = input('Digite o telefone: ')
+          # Verifica se o número de telefone tem exatamente 11 dígitos
+          if len(self._telefone) == 11:
+            break
+          else:
+              # Se o número de telefone for inválido, imprime uma mensagem de erro e solicita ao usuário que insira o número novamente
+              print('Telefone inválido. Digite novamente.')
       self._nacionalidade = input('Digite a nacionalidade: ')
+    # método para deletar usuário
+    def deletar_usuario(self):
+      del self._id_usuario
+      del self._telefone
+      del self._nacionalidade
 
     # métodos get e set
     @property
@@ -36,10 +51,12 @@ class Usuario:
     def nacionalidade(self, value):
       self._nacionalidade = value
 
+
   # instancio a classe Usuario e método
 usuario = Usuario()
 usuario.adicionar_usuario(1)
 print(usuario.id_usuario)
 print(usuario.telefone)
 print(usuario.nacionalidade)
+usuario.deletar_usuario()
 print('Usuário cadastrado com sucesso!')
