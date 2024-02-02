@@ -1,17 +1,7 @@
 class Livro:
 
-    # Construtor que inicializa os atributos padrões
-    # Se a função não tivesse sido definida, ainda assim o objeto seria instanciado com valores padrões
+    # Construtor - instancia objetos do tipo Livro recebendo os atributos deste pelo usuário
     def __init__(self):
-        self._titulo = None
-        self._editora = None
-        self._exemplares = 0
-        self._autores = []
-        self._generos = []
-
-    # O método cadastraLivro está sendo utilizado como uma espécie de construtor, mas não instacia o objeto, apenas reatribui
-    # os valores aos atributos de acordo com a vontade do usuário
-    def cadastraLivro(self):
         # Acredito que talvez devêssemos utilizar o atributo ID, para trackear o livro
         # Definindo valores de quantidade fixa
         self._titulo = input("Digite o nome do livro: ")

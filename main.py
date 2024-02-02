@@ -47,9 +47,7 @@ def menuLivros():
     # Condicoes, cada uma vai chamar uma funcao definida anteriormente
     if opcao == 1:
         # Instancia o objeto
-        livro = Livro()
-        # Chama a função da classe que reatribui os valores desejados
-        livro.cadastraLivro() # Estamos apenas instanciando um livro, mas precisamos cadastrá-lo no estoque da biblioteca
+        livro = Livro() # Estamos apenas instanciando um livro, mas precisamos cadastrá-lo no estoque da biblioteca
     
     elif opcao == 2:
         # A funcao chamada aqui deve alterar as caracteristicas do livro por meio de setters definidos na classe Livro
