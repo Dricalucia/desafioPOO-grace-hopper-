@@ -1,5 +1,7 @@
 from livro import *
 from genero import *
+from usuario import *
+import random
 
 # Função que chama o menu de usuário
 def menuUsuario():
@@ -11,25 +13,27 @@ def menuUsuario():
     print("- Digite 0 para sair do sistema")
 
     # Recebe a opcao do usuario
-    opcao = int(input())
+    opcao = input("Digite a opção desejada: ")
 
-    if opcao == 1:
+    if opcao == '1':
+        id_usuario = random.randint(0, 100)
+        print(f"O ID do usuário é: {id_usuario}")
+        usuario = Usuario()
+        usuario.adicionar_usuario(id_usuario)
+    elif opcao == '2':
+        id_usuario = input("Digite o ID do usuário a ser alterado: ")
+        # Aqui você pode chamar o método para alterar o usuário
+    elif opcao == '3':
+        id_usuario = input("Digite o ID do usuário a ser deletado: ")
+        # Aqui você pode chamar o método para deletar o usuário
+    elif opcao == '4':
+        todos_usuarios = Usuario.mostrar_todos_usuarios()
+        for usuario in todos_usuarios:
+            print(usuario.id_usuario, usuario.telefone, usuario.nacionalidade)
+    elif opcao == '0':
         pass
-    
-    elif opcao == 2:
-        pass
-
-    elif opcao == 3:
-        pass
-
-    elif opcao == 4:
-        pass
-
-    elif opcao == 0:
-        pass
-
     else:
-        print("Opcao invalida. Tente novamente.")
+        print("Opção inválida. Tente novamente.")
 
 # Função que chama o menu de livros
 def menuLivros():
