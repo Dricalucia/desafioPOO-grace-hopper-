@@ -1,9 +1,13 @@
 class Usuario:
+  # Lista para armazenar os usuários
+    usuarios = []
   # método construtor
     def __init__(self):
       self._id_usuario = 0
       self._telefone = ''
       self._nacionalidade = ''
+      # adiciono o usuario na lista
+      Usuario.usuarios.append(self)
 
     # método para adicionar usuário
     def adicionar_usuario(self, id_usuario):
@@ -51,12 +55,19 @@ class Usuario:
     def nacionalidade(self, value):
       self._nacionalidade = value
 
+    # método de classe para mostrar usuários
+    @classmethod
+    def mostrar_todos_usuarios(cls):
+      return cls.usuarios
+
+
 
   # instancio a classe Usuario e método
-usuario = Usuario()
-usuario.adicionar_usuario(1)
-print(usuario.id_usuario)
-print(usuario.telefone)
-print(usuario.nacionalidade)
-usuario.deletar_usuario()
-print('Usuário cadastrado com sucesso!')
+# usuario = Usuario()
+# usuario.adicionar_usuario(1)
+# print(usuario.id_usuario)
+# print(usuario.telefone)
+# print(usuario.nacionalidade)
+# usuario.deletar_usuario()
+# print('Usuário cadastrado com sucesso!')
+
