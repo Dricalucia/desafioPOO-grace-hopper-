@@ -6,24 +6,26 @@ class Usuario:
       self._id_usuario = 0
       self._telefone = ''
       self._nacionalidade = ''
-      # adiciono o usuario na lista
       Usuario.usuarios.append(self)
 
     # método para adicionar usuário
     def adicionar_usuario(self, id_usuario):
-      self._id_usuario = id_usuario
-      self._nacionalidade = ''
-      #Este é um loop infinito que continuará até que o usuário insira um número de telefone válido
-      while True:
+        self._id_usuario = id_usuario
+        self._nacionalidade = ''
+        telefones_cadastrados = [] # Lista para armazenar os telefones cadastrados
+        #Este é um loop infinito que continuará até que o usuário insira um número de telefone celular com 11 digitos e que não esteja na lista de telefones cadastrados
+        while True:
           # Solicita ao usuário que insira um número de telefone
           self._telefone = input('Digite o telefone: ')
           # Verifica se o número de telefone tem exatamente 11 dígitos
-          if len(self._telefone) == 11:
+          if len(self._telefone) == 11 and self._telefone not in telefones_cadastrados:
             break
+          elif self._telefone in telefones_cadastrados:
+           print("Este telefone já está cadastrado. Por favor, insira um número diferente.")
           else:
-              # Se o número de telefone for inválido, imprime uma mensagem de erro e solicita ao usuário que insira o número novamente
-              print('Telefone inválido. Digite novamente.')
-      self._nacionalidade = input('Digite a nacionalidade: ')
+            # Se o número de telefone for inválido, imprime uma mensagem de erro e solicita ao usuário que insira o número novamente
+            print('Telefone inválido. Digite novamente.')
+        self._nacionalidade = input('Digite a nacionalidade: ')
     # método para deletar usuário
     def deletar_usuario(self):
       del self._id_usuario
@@ -62,7 +64,7 @@ class Usuario:
 
 
 
-  # instancio a classe Usuario e método
+# instancio a classe Usuario e método
 # usuario = Usuario()
 # usuario.adicionar_usuario(1)
 # print(usuario.id_usuario)
