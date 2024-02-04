@@ -1,6 +1,10 @@
-from livro import *
-from genero import *
-from usuario import *
+from Livro import *
+from Genero import *
+from Usuario import *
+from Autor import *
+from Exemplar import *
+from Emprestimo import *
+
 import random
 
 # Função que chama o menu de usuário
