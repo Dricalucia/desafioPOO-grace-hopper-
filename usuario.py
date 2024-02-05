@@ -3,6 +3,7 @@ class Usuario:
     usuarios = []
   # método construtor
     def __init__(self):
+      self._nome = ''
       self._id_usuario = 0
       self._telefone = ''
       self._nacionalidade = ''
@@ -11,6 +12,7 @@ class Usuario:
     # método para adicionar usuário
     def adicionar_usuario(self, id_usuario):
         self._id_usuario = id_usuario
+        self._nome = input('Digite o nome: ')
         self._nacionalidade = ''
         telefones_cadastrados = [] # Lista para armazenar os telefones cadastrados
         #Este é um loop infinito que continuará até que o usuário insira um número de telefone celular com 11 digitos e que não esteja na lista de telefones cadastrados
@@ -28,6 +30,7 @@ class Usuario:
         self._nacionalidade = input('Digite a nacionalidade: ')
     # método para deletar usuário
     def deletar_usuario(self):
+      del self._nome
       del self._id_usuario
       del self._telefone
       del self._nacionalidade
@@ -40,6 +43,14 @@ class Usuario:
     @id_usuario.setter
     def id_usuario(self, value):
       self._id_usuario = value
+
+    @property
+    def nome(self):
+      return self._nome
+
+    @nome.setter
+    def nome(self, value):
+      self._nome = value
 
     @property
     def telefone(self):

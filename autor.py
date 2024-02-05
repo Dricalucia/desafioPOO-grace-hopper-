@@ -1,5 +1,5 @@
-from Pessoa import*
+from pessoa import *
 
-class Usuario(Pessoa):
+class Autor(Pessoa):
     def __init__(self, nome, telefone, nacionalidade):
         super().__init__(nome, telefone, nacionalidade)

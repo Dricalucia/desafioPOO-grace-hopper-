@@ -1,7 +1,7 @@
-from Livrocopy import *
+from livrocopy import *
 from Genero import *
-from Usuariocopy import *
-from Autor import *
+from usuariocopy import *
+from autor import *
 from Exemplar import *
 from Emprestimo import *
 
