@@ -25,7 +25,25 @@ def menuUsuario():
         usuario = Usuario()
         usuario.adicionar_usuario(id_usuario)
     elif opcao == '2':
-        id_usuario = input("Digite o ID do usuário a ser alterado: ")
+        for usuario in Usuario.usuarios:
+            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
+        #solicitar ao usuário que digite o ID do usuário a ser alterado
+        id_usuario = int(input("Digite o ID do usuário a ser alterado: "))
+
+        # Procurar o usuário com o ID digitado
+        for usuario in Usuario.usuarios:
+            if usuario.id_usuario == id_usuario:
+                # Chamar o método para alterar o usuário
+                novo_nome = input("Digite o novo nome: ")
+                novo_telefone = input("Digite o novo telefone: ")
+                nova_nacionalidade = input("Digite a nova nacionalidade: ")
+                # Editar o usuário
+                usuario.editar_usuario(id_usuario, novo_nome, novo_telefone, nova_nacionalidade)
+                # Mostrar o usuário alterado
+                print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
+                break
+        else:
+            print("Usuário não encontrado.")
         # Aqui você pode chamar o método para alterar o usuário
     elif opcao == '3':
         id_usuario = input("Digite o ID do usuário a ser deletado: ")
@@ -48,7 +66,7 @@ def menuLivros():
     print("- Digite 3 para deletar um livro")
     print("- Digite 4 para listar os livros cadastrados")
     print("- Digite 0 para sair do sistema")
-    
+
     # Recebe a opcao do usuario
     opcao = int(input())
 
@@ -56,7 +74,7 @@ def menuLivros():
     if opcao == 1:
         # Instancia o objeto
         livro = Livro() # Estamos apenas instanciando um livro, mas precisamos cadastrá-lo no estoque da biblioteca
-    
+
     elif opcao == 2:
         # A funcao chamada aqui deve alterar as caracteristicas do livro por meio de setters definidos na classe Livro
         pass
@@ -68,7 +86,7 @@ def menuLivros():
     elif opcao == 4:
         # A funcao chamada aqui deve listar os livros cadastrados no sistema, funcao definida na classe Biblioteca
         pass
-    
+
     elif opcao == 0:
         return
 

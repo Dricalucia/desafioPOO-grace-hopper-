@@ -3,14 +3,14 @@ class Usuario:
     usuarios = []
   # método construtor
     def __init__(self):
-      self._nome = ''
       self._id_usuario = 0
+      self._nome = ''
       self._telefone = ''
       self._nacionalidade = ''
       Usuario.usuarios.append(self)
 
     # método para adicionar usuário
-    def adicionar_usuario(self, id_usuario):
+    def adicionar_usuario(self, id_usuario=None, nome=None, telefone=None, nacionalidade=None):
         self._id_usuario = id_usuario
         self._nome = input('Digite o nome: ')
         self._nacionalidade = ''
@@ -30,10 +30,21 @@ class Usuario:
         self._nacionalidade = input('Digite a nacionalidade: ')
     # método para deletar usuário
     def deletar_usuario(self):
-      del self._nome
       del self._id_usuario
+      del self._nome
       del self._telefone
       del self._nacionalidade
+
+    # método para editar usuário
+    def editar_usuario(self, id_usuario=None,nome=None, telefone=None, nacionalidade=None):
+        if id_usuario is not None:
+            self._id_usuario = id_usuario
+        if nome is not None:
+            self._nome = nome
+        if telefone is not None:
+            self._telefone = telefone
+        if nacionalidade is not None:
+            self._nacionalidade = nacionalidade
 
     # métodos get e set
     @property
