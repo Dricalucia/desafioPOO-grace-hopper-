@@ -1,4 +1,4 @@
-from Pessoa import*
+from pessoa import*
 
 class Usuario(Pessoa):
     def __init__(self, nome, telefone, nacionalidade):

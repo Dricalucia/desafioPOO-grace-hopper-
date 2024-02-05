@@ -1,9 +1,9 @@
-from Livro import *
-from Genero import *
-from Usuario import *
-from Autor import *
-from Exemplar import *
-from Emprestimo import *
+from livro import *
+from genero import *
+from usuario import *
+from autor import *
+from exemplar import *
+from emprestimo import *
 
 import random
 
@@ -33,7 +33,7 @@ def menuUsuario():
     elif opcao == '4':
         todos_usuarios = Usuario.mostrar_todos_usuarios()
         for usuario in todos_usuarios:
-            print(usuario.id_usuario, usuario.telefone, usuario.nacionalidade)
+            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
     elif opcao == '0':
         pass
     else:
