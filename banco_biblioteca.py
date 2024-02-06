@@ -63,19 +63,20 @@ cursor.execute('CREATE TABLE exemplar(\
 cursor.execute('CREATE TABLE emprestimo(\
                id_emprestimo INTEGER PRIMARY KEY AUTOINCREMENT,\
                id_usuario INTEGER,\
-               id_livro INTEGER,\
+               id_exemplar INTEGER,\
                data_emprestimo DATETIME,\
                data_devolucao DATETIME,\
                estado varchar (30),\
                FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),\
-               FOREIGN KEY(id_livro) REFERENCES livro(id_livro));')
+               FOREIGN KEY(id_exemplar) REFERENCES exemplar(id_exemplar));')
 
 #Tabela biblioteca
 cursor.execute('CREATE TABLE biblioteca(\
-               id_biblioteca INTEGER PRIMARY KEY AUTOINCREMENT,\
+               id_biblioteca INTEGER,\
                id_usuario INTEGER,\
                id_livro INTEGER,\
                id_emprestimo INTEGER,\
+               PRIMARY KEY (id_biblioteca, id_usuario, id_livro, id_emprestimo),\
                FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),\
                FOREIGN KEY(id_livro) REFERENCES livro(id_livro),\
                FOREIGN KEY(id_emprestimo) REFERENCES emprestimo(id_emprestimo));')
