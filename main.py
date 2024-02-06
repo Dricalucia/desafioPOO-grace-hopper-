@@ -4,40 +4,76 @@ from usuario import *
 from autor import *
 from exemplar import *
 from emprestimo import *
+from biblioteca import *
 
-import random
+biblioteca = Biblioteca("Nome da biblioteca")
+
+def alteraUsuario(usuarioAlterado):
+    while True:
+        print("\n# Menu - Alteracao de Usuario #")
+        print("- Digite 1 para alterar o nome do usuario")
+        print("- Digite 2 para alterar o telefone do usuario")
+        print("- Digite 3 para alterar a nacionalidade do usuario")
+        print("- Digite 0 para sair do sistema")
+
+        # Recebe a opcao do usuario
+        opcao = input("Digite a opção desejada: ")
+
+        if opcao == 1:
+            usuarioAlterado.nome = input("Digite o novo nome do usuario: ")
+
+        elif opcao == 2:
+            usuarioAlterado.checar_telefone()
+
+        elif opcao == 3:
+            usuarioAlterado.nacionalidade = input("Digite a nova nacionalidade do usuario: ")
+
+        elif opcao == 0:
+            break
+
+        else:
+            print("Opcao invalida. Digite novamente.")
 
 # Função que chama o menu de usuário
 def menuUsuario():
-    print("\n# Menu - Usuarios #")
-    print("- Digite 1 para cadastrar um usuario")
-    print("- Digite 2 para alterar um usuario")
-    print("- Digite 3 para deletar um usuario")
-    print("- Digite 4 para listar os usuarios cadastrados")
-    print("- Digite 0 para sair do sistema")
+    while True:
+        print("\n# Menu - Usuarios #")
+        print("- Digite 1 para cadastrar um usuario")
+        print("- Digite 2 para alterar um usuario")
+        print("- Digite 3 para deletar um usuario")
+        print("- Digite 4 para listar os usuarios cadastrados")
+        print("- Digite 0 para sair do sistema")
 
-    # Recebe a opcao do usuario
-    opcao = input("Digite a opção desejada: ")
+        # Recebe a opcao do usuario
+        opcao = input("Digite a opção desejada: ")
 
-    if opcao == '1':
-        id_usuario = random.randint(0, 100)
-        print(f"O ID do usuário é: {id_usuario}")
-        usuario = Usuario()
-        usuario.adicionar_usuario(id_usuario)
-    elif opcao == '2':
-        id_usuario = input("Digite o ID do usuário a ser alterado: ")
-        # Aqui você pode chamar o método para alterar o usuário
-    elif opcao == '3':
-        id_usuario = input("Digite o ID do usuário a ser deletado: ")
-        # Aqui você pode chamar o método para deletar o usuário
-    elif opcao == '4':
-        todos_usuarios = Usuario.mostrar_todos_usuarios()
-        for usuario in todos_usuarios:
-            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
-    elif opcao == '0':
-        pass
-    else:
-        print("Opção inválida. Tente novamente.")
+        if opcao == '1':
+            # Instancia o usuário
+            novoUsuario = Usuario()
+            # Cadastra o usuário no banco de dados
+            novoUsuario.cadastrar()
+
+        elif opcao == '2':
+            # Recebe o ID e abre o menu de alteração
+            id_usuario = input("Digite o ID do usuário a ser alterado: ")
+            # IMPLEMENTAR! Buscar no banco de dados o usuário com ID correspondente e então, retornar o usuário
+            usuarioAlterado = ''
+            alteraUsuario(usuarioAlterado)
+
+        elif opcao == '3':
+            id_usuario = input("Digite o ID do usuário a ser deletado: ")
+            # IMPLEMENTAR! Buscar no banco de dados o usuário com ID correspondente e então, retornar o usuário
+            usuarioDeletado = ''
+            usuarioDeletado.deletar()
+
+        elif opcao == '4':
+            biblioteca.listarUsuarios()
+        
+        elif opcao == '0':
+            break
+
+        else:
+            print("Opção inválida. Tente novamente.")
 
 # Função que chama o menu de livros
 def menuLivros():
@@ -131,6 +167,6 @@ def main():
 
         # Caso invalido
         else:
-            print("Numero invalido.")
+            print("Numero invalido. Tente novamente.")
 
 main()

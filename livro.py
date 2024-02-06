@@ -27,6 +27,7 @@ class Livro:
         # Definindo listas
         self._autores = autores
         self._generos = generos
+        self._renovacoes_maximas = int(input("Digite o número de renovações máximas: "))
         print("Livro cadastrado com sucesso!\n")
 
     # Setters e getters só fazem sentido com atributos protegidos ou privados, por isso transformei os atributos em privados
@@ -47,6 +48,14 @@ class Livro:
     def editora(self):
         novaEditora = input("Digite a nova editora do livro: ")
         self._editora = novaEditora
+
+    @property
+    def renovacoes_maximas(self):
+        return self._renovacoes_maximas
+
+    @renovacoes_maximas.setter
+    def renovacoes_maximas(self):
+        self._renovacoes_maximas = input("Digite o maximo de renovacoes do livro: ")
 
     @property
     def exemplares(self):
@@ -72,6 +81,15 @@ class Livro:
     @autores.setter
     def autores(self, novosAutores):
         self._autores = novosAutores    
+
+    def adicionar_autor(self, autor):
+        self.autores.append(autor)
+
+    def adicionar_genero(self, genero):
+        self.generos.append(genero)
+
+    def adicionar_exemplar(self, exemplar):
+        self.exemplares_disponiveis.append(exemplar)
 
     def __del__(self):
         print(f"Livro {self._titulo} deletado com sucesso.")
