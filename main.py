@@ -59,6 +59,8 @@ def menuUsuario():
 
 # Função que chama o menu de livros
 def menuLivros():
+    
+
     # Printa as opcoes ao usuario
     print("\n# Menu - Livros #")
     print("- Digite 1 para cadastrar um livro")
@@ -85,7 +87,8 @@ def menuLivros():
 
     elif opcao == 4:
         # A funcao chamada aqui deve listar os livros cadastrados no sistema, funcao definida na classe Biblioteca
-        pass
+        for livro in Livro.livros:
+            print(livro)
 
     elif opcao == 0:
         return
@@ -151,4 +154,5 @@ def main():
         else:
             print("Numero invalido.")
 
-main()
+if __name__ == "__main__":
+    main()
