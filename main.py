@@ -46,8 +46,19 @@ def menuUsuario():
             print("Usuário não encontrado.")
         # Aqui você pode chamar o método para alterar o usuário
     elif opcao == '3':
-        id_usuario = input("Digite o ID do usuário a ser deletado: ")
-        # Aqui você pode chamar o método para deletar o usuário
+        todos_usuarios = Usuario.mostrar_todos_usuarios()
+        for usuario in todos_usuarios:
+            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
+        
+        id_usuario = int(input("Digite o ID do usuário a ser deletado: "))
+        for usuario in todos_usuarios:
+            if usuario.id_usuario == id_usuario:
+                Usuario.usuarios.remove(usuario)
+                print("Usuário deletado com sucesso.")
+                break
+            else:
+                print("Usuário inválido!")
+
     elif opcao == '4':
         todos_usuarios = Usuario.mostrar_todos_usuarios()
         for usuario in todos_usuarios:
@@ -137,7 +148,7 @@ def menuLivros():
                 print("Livro deletado com sucesso.")
                 break
             else:
-                print("Livro não encontrado.")
+                print("Livro inválido!")
 
     elif opcao == 4:
         # A funcao chamada aqui deve listar os livros cadastrados no sistema, funcao definida na classe Biblioteca
