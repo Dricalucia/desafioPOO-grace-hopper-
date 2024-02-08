@@ -79,11 +79,65 @@ def menuLivros():
 
     elif opcao == 2:
         # A funcao chamada aqui deve alterar as caracteristicas do livro por meio de setters definidos na classe Livro
-        pass
+        #pass
+        print("Livros cadastrados:")
+        for livro in Livro.livros:
+            print(f"ID: {livro.id_livro}, Título: {livro.titulo}")
+
+        id_livro = int(input("Digite o ID do livro a ser alterado: "))
+
+        for livro in Livro.livros:
+            if livro.id_livro == id_livro:
+                print(livro.id_livro, livro._titulo)
+
+                novo_titulo = input("Digite o novo título do livro: ")
+                nova_editora = input("Digite a nova editora do livro: ")
+                quantidadeExemplares = int(input("Digite a nova quantidade de exemplares: "))
+
+                print("Autores atuais:", livro.autores) # Listar os autores atuais
+                novos_autores = []
+                while True:
+                    autor = input("Digite os autores (0 para parar o processo): ")
+                    if autor == '0':
+                        break
+                    else:
+                        novos_autores.append(autor)
+                
+                print("Gêneros atuais:", livro.generos)
+                novos_generos = []
+                while True:
+                    genero = input("Digite o novo gênero (0 para parar): ")
+                    if genero == '0':
+                        break
+                    novos_generos.append(genero)
+                
+                livro.titulo = novo_titulo
+                livro.editora = nova_editora
+                livro.exemplares = quantidadeExemplares
+                livro.autores = novos_autores
+                livro.generos = novos_generos
+
+                # Livro alterado
+                print(f"ID: {livro.id_livro}\nTítulo: {livro.titulo}\nEditora: {livro.editora}\nN° Exemplares: {livro.exemplares}\nAutores: {livro.autores}\nGêneros: {livro.generos}")
+                break
+            else:
+                print("Livro não encontrado.")
 
     elif opcao == 3:
         # A funcao chamada aqui deve chamar o destrutor definido na classe Livro
-        pass
+        #pass
+        print("Livros cadastrados:")
+        for livro in Livro.livros:
+            print(f"ID: {livro.id_livro}, Título: {livro.titulo}")
+
+        id_livro = int(input("Digite o ID do livro a ser deletado: "))
+        for livro in Livro.livros:
+            if livro.id_livro == id_livro:
+                Livro.livros.remove(livro)
+                print("Livro deletado com sucesso.")
+                break
+            else:
+                print("Livro não encontrado.")
 
     elif opcao == 4:
         # A funcao chamada aqui deve listar os livros cadastrados no sistema, funcao definida na classe Biblioteca

@@ -5,6 +5,7 @@ class Livro:
     def __init__(self):
         # Acredito que talvez devêssemos utilizar o atributo ID, para trackear o livro
         # Definindo valores de quantidade fixa
+        self._id_livro = len(Livro.livros) + 1
         self._titulo = input("Digite o nome do livro: ")
         self._editora = input("Digite o nome do editora: ")
         self._exemplares = input("Digite a quantidade de exemplares: ")
@@ -33,47 +34,51 @@ class Livro:
 
     # Setters e getters só fazem sentido com atributos protegidos ou privados, por isso transformei os atributos em privados
     @property
+    def id_livro(self):
+        return self._id_livro
+    
+    @property
     def titulo(self):
         return self._titulo
 
-#    @titulo.setter
-#   def titulo(self):
+    @titulo.setter
+    def titulo(self, novo_titulo):
 #        novoTitulo = input("Digite o novo titulo do livro: ")
-#        self._titulo = novoTitulo
+        self._titulo = novo_titulo
 
     @property
     def editora(self):
         return self._editora
 
-#    @editora.setter
-#    def editora(self):
+    @editora.setter
+    def editora(self, nova_editora):
 #        novaEditora = input("Digite a nova editora do livro: ")
-#        self._editora = novaEditora
+        self._editora = nova_editora
 
     @property
     def exemplares(self):
         return self._exemplares
 
-#    @exemplares.setter
-#    def exemplares(self):
-#        quantidadeExemplares = int(input("Digite a nova quantidade de exemplares: "))
-#        self._exemplares = quantidadeExemplares
+    @exemplares.setter
+    def exemplares(self, quantidadeExemplares):
+ #       quantidadeExemplares = int(input("Digite a nova quantidade de exemplares: "))
+        self._exemplares = quantidadeExemplares
 
     @property
     def generos(self):
         return self._generos
 
-#    @generos.setter
-#    def generos(self, novosGeneros):
-#        self._generos = novosGeneros  
+    @generos.setter
+    def generos(self, novosGeneros):
+        self._generos = novosGeneros  
 
     @property
     def autores(self):
         return self._autores
 
-#    @autores.setter
-#    def autores(self, novosAutores):
-#        self._autores = novosAutores    
+    @autores.setter
+    def autores(self, novosAutores):
+        self._autores = novosAutores    
 
 #    def __del__(self):
 #        print(f"Livro {self._titulo} deletado com sucesso.")
@@ -83,6 +88,6 @@ class Livro:
         print(f"Livro {self._titulo} deletado com sucesso.")
 
     def __str__(self):
-       return f"Nome do livro: {self._titulo}\nNome da editora: {self._editora}\nGeneros: {self._generos}\nAutores: {self._autores}\nQuantidade de exemplares: {self._exemplares}"
+       return f"ID do livro: {self._id_livro}\nNome do livro: {self._titulo}\nNome da editora: {self._editora}\nGeneros: {self._generos}\nAutores: {self._autores}\nQuantidade de exemplares: {self._exemplares}"
 
     
