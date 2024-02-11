@@ -73,7 +73,50 @@ def remover_genero(nome_genero):
         # Executa a consulta SQL para excluir um genero
         cursor.execute("DELETE FROM genero WHERE genero = ?", (nome_genero,))
 
+# Função para realizar consultas SQL
+def consultar(query):
+    conn = sqlite3.connect('banco_biblioteca')
+    c = conn.cursor()
+    c.execute(query)
+    resultados = c.fetchall()
+    conn.close()
+    return resultados
+
+# Função para executar atualizações no banco de dados
+def executar_atualizacao(query):
+    conn = sqlite3.connect('banco_biblioteca')
+    c = conn.cursor()
+    c.execute(query)
+    conn.commit()
+    conn.close()
+
+# Função para listar todos os livros disponíveis
+def listar_livros_disponiveis():
+    query = "SELECT * FROM livro WHERE disponivel = 1"
+    return consultar(query)
+
+# Função para encontrar todos os livros emprestados no momento
+def listar_livros_emprestados():
+    query = "SELECT * FROM livros WHERE disponivel = 0"
+    return consultar(query)
+
+# Função para localizar os livros escritos por um autor específico
+def localizar_livros_por_autor(nome):
+    query = f"SELECT * FROM livros JOIN autores ON livro.autor_id = autor.id WHERE autor.nome = '{nome}'"
+    return consultar(query)
 
 marcar_livro_como_disponivel('Caroline', 'O Hobbit')
 remover_genero('Crime')
 print('O genero escolhido foi deletado com sucesso.')
+
+
+# Exemplo de uso das consultas e operações
+print("Livros disponíveis:")
+print(listar_livros_disponiveis())
+
+print("\nLivros emprestados:")
+print(listar_livros_emprestados())
+
+print("\nLivros escritos por Stephen King:")
+print(localizar_livros_por_autor("Stephen King"))
+
