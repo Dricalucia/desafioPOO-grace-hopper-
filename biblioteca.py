@@ -61,28 +61,39 @@ class Biblioteca:
                 if exemplar.esta_disponivel():
                     print(f"Nome do livro: {livro.titulo} ID do exemplar: {idExemplar}")
 
-    def emprestarLivro(self, idUsuario, idEexemplar):
+    def listarEmprestimos(self):
+        print("\nLista de emprestimos realizados na biblioteca:")
+        for emprestimo in self.emprestimos:
+            print(emprestimo)
+
+    def emprestarLivro(self, idUsuario, idLivro, idEexemplar):
         # Se o exemplar estiver disponível
         usuario = self.usuarios[idUsuario]
-        exemplar = self.exemplares_disponiveis()[idEexemplar]
+        exemplar = self.exemplares_disponiveis(idLivro)[idEexemplar]
         emprestimo = Emprestimo(usuario, exemplar)
         self.emprestimos.append(emprestimo)
         exemplar.emprestar()
 
-    def devolverLivro(self, idExemplar):
-        for emprestimo in self.emprestimos:
-            if emprestimo.exemplar.id == idExemplar:
-                emprestimo.devolver()
+    '''
+    def devolverLivro(self, idExemplarDevolvido, idLivroDevolvido):
+        for idLivro, livro in self.livros.items():
+            if idLivro == idLivroDevolvido:
+                for exemplar in livro.exemplares:
+                    
+                    return
+            
 
     def renovarLivro(self, idExemplar):
         for emprestimo in self.emprestimos:
             if emprestimo.exemplar.id == idExemplar:
                 emprestimo.renovar()
-
-    def exemplares_disponiveis(self, idLivro):
+    '''
+    
+    def exemplares_disponiveis(self, idLivroProcurado):
         exemplares_disponiveis = {}
         for idLivro, livro in self.livros.items():
-            for idExemplar, exemplar in livro.exemplares.items():
-                if exemplar.esta_disponivel():
-                    exemplares_disponiveis[idExemplar] = exemplar
+            if idLivro == idLivroProcurado:
+                for idExemplar, exemplar in livro.exemplares.items():
+                    if exemplar.esta_disponivel():
+                        exemplares_disponiveis[idExemplar] = exemplar
         return exemplares_disponiveis

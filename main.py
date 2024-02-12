@@ -29,3 +29,9 @@ biblioteca.listarUsuarios()
 biblioteca.listarFuncionarios()
 biblioteca.listarLivros()
 biblioteca.listarExemplares()
+
+biblioteca.emprestarLivro(1, 1, 1)
+biblioteca.emprestarLivro(2, 2, 0)
+
+biblioteca.listarExemplares()
+biblioteca.listarEmprestimos()
