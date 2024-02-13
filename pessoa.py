@@ -1,4 +1,5 @@
 # Importando a biblioteca de classes abstratas
+# Essa classe foi criada para usarmos uma classe abstrata no sistema
 from abc import ABC
 
 # Definindo a classe Pessoa como um filho da classe ABC (Abstract Base Class)

@@ -12,4 +12,5 @@ class Usuario(Pessoa):
 
     def __str__(self):
         # O método de impressão é herdado da classe mãe, mas também há a adição da string que imprime os livros emprestados ao usuário
-        return super().__str__() + f'Livros emprestados: {", ".join(self.livrosEmprestados)}\n'
+        livros_emprestados = ', '.join(exemplar.livro.titulo for exemplar in self.livrosEmprestados)
+        return super().__str__() + f'Livros emprestados: {livros_emprestados}\n'

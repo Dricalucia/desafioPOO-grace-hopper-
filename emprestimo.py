@@ -13,12 +13,12 @@ class Emprestimo:
         self.renovacoes = 0
         self.data_emprestimo = date.today()
         self.data_devolucao = None
-        self.exemplar.disponivel = False
+        self.exemplar.emprestar(self)
         # Iterando a lista de livros emprestados do usuário em questão
         usuario.livrosEmprestados.append(exemplar)
 
     def devolver(self):
-        self.exemplar.disponivel = True
+        self.exemplar.devolver(self)
         self.data_devolucao = date.today()
         self.usuario.livrosEmprestados.remove(self.exemplar)
 
