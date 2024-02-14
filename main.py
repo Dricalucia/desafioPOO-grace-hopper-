@@ -1,223 +1,80 @@
-from livro import *
-from genero import *
-from usuario import *
-from autor import *
-from exemplar import *
-from emprestimo import *
+# Importando as classes necessárias
+from livro import Livro
+from usuario import Usuario
+from funcionario import Funcionario
+from exemplar import Exemplar
+from emprestimo import Emprestimo
+from biblioteca import Biblioteca
 
-import random
+# Observações:
+# Métodos abstratos também não foram implementados.
+# Setters, getters e atributos privados/protegidos também não foram implementados.
 
-# Função que chama o menu de usuário
-def menuUsuario():
-    print("\n# Menu - Usuarios #")
-    print("- Digite 1 para cadastrar um usuario")
-    print("- Digite 2 para alterar um usuario")
-    print("- Digite 3 para deletar um usuario")
-    print("- Digite 4 para listar os usuarios cadastrados")
-    print("- Digite 0 para sair do sistema")
+# Instanciando o gerenciador
+biblioteca = Biblioteca("PyLib")
 
-    # Recebe a opcao do usuario
-    opcao = input("Digite a opção desejada: ")
+# Cadastro de usuários
+# Ordem: ID, Nome, Telefone, Nacionalidade
+biblioteca.cadastrarUsuario(1, 'Ana', 123456789, 'Brasileira')
+biblioteca.cadastrarUsuario(2, 'João', 123456789, 'Mexicano')
+biblioteca.cadastrarUsuario(3, 'Marcos', 123456789, 'Argentino')
 
-    if opcao == '1':
-        id_usuario = random.randint(0, 100)
-        print(f"O ID do usuário é: {id_usuario}")
-        usuario = Usuario()
-        usuario.adicionar_usuario(id_usuario)
-    elif opcao == '2':
-        for usuario in Usuario.usuarios:
-            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
-        #solicitar ao usuário que digite o ID do usuário a ser alterado
-        id_usuario = int(input("Digite o ID do usuário a ser alterado: "))
+# Cadastro de funcionários
+# Ordem: ID, Nome, Telefone, Nacionalidade e Cargo
+biblioteca.cadastrarFuncionario(1, 'Eva', 11112222, 'Brasileira', 'Gerente')
+biblioteca.cadastrarFuncionario(2, 'Carlos', 11112222, 'Espanhol', 'Assistente')
 
-        # Procurar o usuário com o ID digitado
-        for usuario in Usuario.usuarios:
-            if usuario.id_usuario == id_usuario:
-                # Chamar o método para alterar o usuário
-                novo_nome = input("Digite o novo nome: ")
-                novo_telefone = input("Digite o novo telefone: ")
-                nova_nacionalidade = input("Digite a nova nacionalidade: ")
-                # Editar o usuário
-                usuario.editar_usuario(id_usuario, novo_nome, novo_telefone, nova_nacionalidade)
-                # Mostrar o usuário alterado
-                print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
-                break
-        else:
-            print("Usuário não encontrado.")
-        # Aqui você pode chamar o método para alterar o usuário
-    elif opcao == '3':
-        todos_usuarios = Usuario.mostrar_todos_usuarios()
-        for usuario in todos_usuarios:
-            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
-        
-        id_usuario = int(input("Digite o ID do usuário a ser deletado: "))
-        for usuario in todos_usuarios:
-            if usuario.id_usuario == id_usuario:
-                Usuario.usuarios.remove(usuario)
-                print("Usuário deletado com sucesso.")
-                break
-            else:
-                print("Usuário inválido!")
+# Cadastro de livros
+# Ordem: ID, Título, Editora, Autores, Gêneros, Número máximo de renovações e Número de exemplares
+biblioteca.cadastrarLivro(1, "Harry Potter e o Cálice de Fogo", "Editora A", ["JK Rowling"], ["Aventura", "Ficção"], 2, 3)
+biblioteca.cadastrarLivro(2, "Dom Casmurro", "Editora B", ["Machado de Assis"], ["Romance"], 2, 2)
 
-    elif opcao == '4':
-        todos_usuarios = Usuario.mostrar_todos_usuarios()
-        for usuario in todos_usuarios:
-            print(usuario.id_usuario, usuario.nome, usuario.telefone, usuario.nacionalidade)
-    elif opcao == '0':
-        pass
-    else:
-        print("Opção inválida. Tente novamente.")
+# Testando possíveis erros com ID's já existentes
+biblioteca.cadastrarUsuario(1, 'Clara', 123456789, 'Brasileira')
+biblioteca.cadastrarFuncionario(1, 'Maria', 11112222, 'Brasileira', 'Bibliotecária')
+biblioteca.cadastrarLivro(2, "O Pequeno Príncipe", "Editora C", ["Antoine de Saint-Exupéry"], ["Literatura Infantil", "Fábula"], 2, 2)
 
-# Função que chama o menu de livros
-def menuLivros():
-    
+# Impressão dos resultados
+biblioteca.listarUsuarios()
+biblioteca.listarFuncionarios()
+biblioteca.listarLivros()
+biblioteca.listarExemplares()
+biblioteca.listarEmprestimos()
 
-    # Printa as opcoes ao usuario
-    print("\n# Menu - Livros #")
-    print("- Digite 1 para cadastrar um livro")
-    print("- Digite 2 para alterar um livro")
-    print("- Digite 3 para deletar um livro")
-    print("- Digite 4 para listar os livros cadastrados")
-    print("- Digite 0 para sair do sistema")
+# Emprestando livros
+# Ordem: ID do Usuário, ID do Livro e ID do Exemplar
+biblioteca.emprestarLivro(1, 1, 1)
+biblioteca.emprestarLivro(1, 2, 1)
+biblioteca.emprestarLivro(2, 2, 0)
 
-    # Recebe a opcao do usuario
-    opcao = int(input())
+# Impressão dos resultados
+biblioteca.listarExemplares()
+biblioteca.listarEmprestimos()
+biblioteca.listarUsuarios()
 
-    # Condicoes, cada uma vai chamar uma funcao definida anteriormente
-    if opcao == 1:
-        # Instancia o objeto
-        livro = Livro() # Estamos apenas instanciando um livro, mas precisamos cadastrá-lo no estoque da biblioteca
+# Devolvendo livros
+# Ordem: ID do Exemplar e ID do Livro
+biblioteca.devolverLivro(1, 1)
+biblioteca.devolverLivro(1, 2)
 
-    elif opcao == 2:
-        # A funcao chamada aqui deve alterar as caracteristicas do livro por meio de setters definidos na classe Livro
-        #pass
-        print("Livros cadastrados:")
-        for livro in Livro.livros:
-            print(f"ID: {livro.id_livro}, Título: {livro.titulo}")
+# Renovando livros
+# Ordem: ID do Exemplar e ID do Livro
+biblioteca.renovarLivro(0, 2)
 
-        id_livro = int(input("Digite o ID do livro a ser alterado: "))
+# Impressão de resultados
+biblioteca.listarExemplares()
+biblioteca.listarEmprestimos()
+biblioteca.listarUsuarios()
 
-        for livro in Livro.livros:
-            if livro.id_livro == id_livro:
-                print(livro.id_livro, livro._titulo)
+# Testando erros de renovação de um livro já devolvido
+biblioteca.renovarLivro(1, 2)
 
-                novo_titulo = input("Digite o novo título do livro: ")
-                nova_editora = input("Digite a nova editora do livro: ")
-                quantidadeExemplares = int(input("Digite a nova quantidade de exemplares: "))
+# Testando limite de renovação
+biblioteca.renovarLivro(0, 2)
+biblioteca.renovarLivro(0, 2)
+biblioteca.renovarLivro(0, 2)
 
-                print("Autores atuais:", livro.autores) # Listar os autores atuais
-                novos_autores = []
-                while True:
-                    autor = input("Digite os autores (0 para parar o processo): ")
-                    if autor == '0':
-                        break
-                    else:
-                        novos_autores.append(autor)
-                
-                print("Gêneros atuais:", livro.generos)
-                novos_generos = []
-                while True:
-                    genero = input("Digite o novo gênero (0 para parar): ")
-                    if genero == '0':
-                        break
-                    novos_generos.append(genero)
-                
-                livro.titulo = novo_titulo
-                livro.editora = nova_editora
-                livro.exemplares = quantidadeExemplares
-                livro.autores = novos_autores
-                livro.generos = novos_generos
-
-                # Livro alterado
-                print(f"ID: {livro.id_livro}\nTítulo: {livro.titulo}\nEditora: {livro.editora}\nN° Exemplares: {livro.exemplares}\nAutores: {livro.autores}\nGêneros: {livro.generos}")
-                break
-            else:
-                print("Livro não encontrado.")
-
-    elif opcao == 3:
-        # A funcao chamada aqui deve chamar o destrutor definido na classe Livro
-        #pass
-        print("Livros cadastrados:")
-        for livro in Livro.livros:
-            print(f"ID: {livro.id_livro}, Título: {livro.titulo}")
-
-        id_livro = int(input("Digite o ID do livro a ser deletado: "))
-        for livro in Livro.livros:
-            if livro.id_livro == id_livro:
-                Livro.livros.remove(livro)
-                print("Livro deletado com sucesso.")
-                break
-            else:
-                print("Livro inválido!")
-
-    elif opcao == 4:
-        # A funcao chamada aqui deve listar os livros cadastrados no sistema, funcao definida na classe Biblioteca
-        for livro in Livro.livros:
-            print(livro)
-
-    elif opcao == 0:
-        return
-
-    else:
-        print("Opcao invalida. Tente novamente.")
-
-# Função que chama o menu biblioteca
-def menuBiblioteca():
-    print("\n# Menu - Biblioteca #")
-    print("- Digite 1 para realizar um emprestimo")
-    print("- Digite 2 para realizar a devolucao de um livro")
-    print("- Digite 3 para listar o historico de emprestimos")
-    print("- Digite 0 para sair do sistema")
-
-    # Recebe a opcao do usuario
-    opcao = int(input())
-
-    if opcao == 1:
-        pass
-    
-    elif opcao == 2:
-        pass
-
-    elif opcao == 3:
-        pass
-
-    elif opcao == 0:
-        pass
-
-    else:
-        print("Opcao invalida. Tente novamente.")
-
-# Menu geral
-def main():
-
-    while True:
-        print("\n# Sistema de Biblioteca #")
-        print("- Digite 1 para o menu de usuarios")
-        print("- Digite 2 para o menu de livros")
-        print("- Digite 3 para atividades da biblioteca")
-        print("- Digite 0 para sair do sistema")
-
-        opcao = int(input())
-
-        # Menu usuario
-        if opcao == 1:
-            menuUsuario()
-
-        # Menu livros
-        elif opcao == 2:
-            menuLivros()
-
-        # Menu biblioteca
-        elif opcao == 3:
-            menuBiblioteca()
-
-        # Sair do sistema
-        elif opcao == 0:
-            break
-
-        # Caso invalido
-        else:
-            print("Numero invalido.")
-
-if __name__ == "__main__":
-    main()
+# Impressão de resultados
+biblioteca.listarExemplares()
+biblioteca.listarEmprestimos()
+biblioteca.listarUsuarios()
