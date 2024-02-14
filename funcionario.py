@@ -12,4 +12,4 @@ class Funcionario(Pessoa):
 
     # Método de impressão herdado da classe mãe
     def __str__(self):
-        return super().__str__() + f'Cargo: {(self.cargo)}\n'
+        return super().__str__() + f'\nCargo: {(self.cargo)}'

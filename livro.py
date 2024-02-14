@@ -19,6 +19,7 @@ class Livro:
         # Exemplo: Existe a entidade do livro Harry Potter, e teremos 5 exemplares desse livro
         # O livro em SI não pode ser tocado, ele é uma espécie de modelo, já os exemplares podem sim ser tocados e emprestados
         self.exemplares = {}
+        # Criação dos objetos do tipo Exemplar, a quantidade será definida pelo parâmetro recebido no construtor do Livro
         for i in range(num_exemplares):
             self.exemplares[i] = Exemplar(self)
 

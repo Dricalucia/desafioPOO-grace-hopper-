@@ -16,7 +16,7 @@ class Exemplar:
         self.disponivel = False
         self.emprestimoAssociado = emprestimo
 
-    def devolver(self, emprestimo):
+    def devolver(self):
         self.disponivel = True
         self.emprestimoAssociado = None
 

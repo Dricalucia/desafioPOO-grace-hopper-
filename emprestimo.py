@@ -18,16 +18,12 @@ class Emprestimo:
         usuario.livrosEmprestados.append(exemplar)
 
     def devolver(self):
-        self.exemplar.devolver(self)
+        self.exemplar.devolver()
         self.data_devolucao = date.today()
         self.usuario.livrosEmprestados.remove(self.exemplar)
 
     def renovar(self):
-        if self.renovacoes <= self.renovacoesMaximas:
-            self.renovacoes += 1
-        else:
-            print("Numero máximo de renovações atingido.")
-            self.devolver()
+        self.renovacoes += 1  
 
     @property
     def estado(self):
@@ -37,4 +33,4 @@ class Emprestimo:
             return "Emprestado"
 
     def __str__(self):
-        return f"\nLivro: {self.exemplar.livro.titulo}\nUsuario: {self.usuario.nome}\nData de Emprestimo: {self.data_emprestimo}\nData de devolucao: {self.data_devolucao}\nRenovacoes: {self.renovacoes}\nRenovacoes Maximas: {self.renovacoesMaximas}\nEstado:{self.estado}"
+        return f"\nLivro: {self.exemplar.livro.titulo}\nUsuario: {self.usuario.nome}\nData de Emprestimo: {self.data_emprestimo}\nData de devolucao: {self.data_devolucao}\nRenovacoes: {self.renovacoes}\nRenovacoes Maximas: {self.renovacoesMaximas}\nEstado: {self.estado}"

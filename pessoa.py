@@ -15,4 +15,4 @@ class Pessoa(ABC):
 
     # Método de impressão dos dados do objeto
     def __str__(self):
-        return f"Dados:\nNome: {self.nome}\nNacionalidade: {self.nacionalidade}\nTelefone: {self.telefone}\n"
+        return f"Nome: {self.nome}\nNacionalidade: {self.nacionalidade}\nTelefone: {self.telefone}"
