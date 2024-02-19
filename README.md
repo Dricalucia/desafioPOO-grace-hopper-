@@ -9,7 +9,7 @@ O sistema trata-se de uma aplicação para um sistema de biblioteca, com os segu
 * Alguns livros podem ter um número máximo de renovações permitidas.
 * A biblioteca mantém um registro de todos os empréstimos realizados, incluindo detalhes como data de empréstimo, data de devolução e estado do exemplar (por exemplo, emprestado ou devolvido).
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge)
 
 # Tecnologias utilizadas
 * Python
